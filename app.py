@@ -4,7 +4,7 @@ import openai
 import os
 
 # Set your OpenAI API key here or use secrets in Streamlit Cloud
-openai.api_key = st.secrets["OPENAI_API_KEY"] if "OPENAI_API_KEY" in st.secrets else os.getenv("OPENAI_API_KEY")
+openai.api_key = st.secrets["GEMINI_API_KEY"] if "GEMINI_API_KEY" in st.secrets else os.getenv("GEMINI_API_KEY")
 
 st.set_page_config(page_title="Job Application Helper AI", layout="wide")
 st.title("🤖 Job Application Helper AI")
@@ -39,7 +39,7 @@ if st.button("Analyze Match"):
             )
             ai_tips = response.choices[0].message.content
         except Exception as e:
-            ai_tips = f"OpenAI API error: {e}"
+            ai_tips = f"GEMINI API error: {e}"
 
         st.subheader(f"✅ Match Score: {match_score:.1f}%")
         st.write("---")
